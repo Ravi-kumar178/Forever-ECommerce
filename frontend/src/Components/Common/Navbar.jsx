@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {assets} from "../assets/assets"
+import {assets} from "../../assets/assets"
 import { NavLink, Link } from 'react-router-dom'
 
 const Navbar = () => {
@@ -60,10 +60,10 @@ const Navbar = () => {
                     <p>Back</p>
                 </div>
 
-                <NavLink onClick={()=>setVisible(false)} to={"/"} className={"py-2 pt-6 border uppercase"}>Home</NavLink>
-                <NavLink onClick={()=>setVisible(false)} to={"/collection"} className={"py-2 pt-6 border uppercase"}>collection</NavLink>
-                <NavLink onClick={()=>setVisible(false)} to={"/about"} className={"py-2 pt-6 border uppercase"}>about</NavLink>
-                <NavLink onClick={()=>setVisible(false)} to={"/contact"} className={"py-2 pt-6 border uppercase"}>contact</NavLink>
+                <NavLink onClick={()=>setVisible(false)} to={"/"} className={"py-2 pt-6 pl-4 border uppercase"}>Home</NavLink>
+                <NavLink onClick={()=>setVisible(false)} to={"/collection"} className={"py-2 pl-4 pt-6 border uppercase"}>collection</NavLink>
+                <NavLink onClick={()=>setVisible(false)} to={"/about"} className={"py-2 pt-6 pl-4 border uppercase"}>about</NavLink>
+                <NavLink onClick={()=>setVisible(false)} to={"/contact"} className={"py-2 pt-6 pl-4 border uppercase"}>contact</NavLink>
             </div>
         </div>
     </div>
