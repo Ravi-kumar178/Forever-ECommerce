@@ -14,7 +14,7 @@ const Login = ({setToken}) => {
       const response = await axios.post(backendUrl+'/api/user/admin',{email,password});
       console.log(response);
       if(response.data.success){
-        setToken(response.data.token)
+        setToken(response.data.token);
       }
       else{
         toast.error(response.data.message);
@@ -40,7 +40,7 @@ const Login = ({setToken}) => {
                   <p className='text-sm font-medium text-gray-700 mb-2'>Password</p>
                   <input onChange={(e)=>setPassword(e.target.value)} value={password} type="password" placeholder='Enter your password' className='w-full rounded-md px-3 py-2 border border-gray-300 outline-none' required/>
                 </div>
-                <button type="submit" className='mt-2 w-full py-2 px-4 rounded-md text-white bg-black' type='submit'>Login</button>
+                <button type="submit" className='mt-2 w-full py-2 px-4 rounded-md text-white bg-black' >Login</button>
             </form>
         </div>
     </div>
