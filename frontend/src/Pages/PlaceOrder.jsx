@@ -25,7 +25,7 @@ const PlaceOrder = () => {
         
         try {
           const {data} = await axios.post(backendUrl+'/api/order/verifyrazorpay',response,{headers:{token}});
-          console.log(data);
+          
           if(data.success){
             
             navigate('/orders');
