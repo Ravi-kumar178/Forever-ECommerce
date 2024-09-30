@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom'
 import Add from './Pages/Add'
 import List from './Pages/List'
 import Orders from './Pages/Orders'
 import Login from './Components/Login'
+
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,6 +22,14 @@ const App = () => {
   useEffect(()=>{
     localStorage.setItem('token',token);
   },[token])
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(()=>{
+    if(token && location.pathname==='/'){
+      navigate('/add');
+    }
+  },[token,location.pathname,navigate]) 
   
 
   return (
