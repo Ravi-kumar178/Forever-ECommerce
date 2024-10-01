@@ -3,11 +3,12 @@ import {ShopContext} from "../Context/ShopContext"
 import Title from "../Components/Common/Title"
 import { assets } from '../assets/assets';
 import CartTotal from '../Components/Cart/CartTotal';
+import { toast } from 'react-toastify';
 
 
 const Cart = () => {
 
-  const {products , currency, cartItems, updateQuantity, navigate} = useContext(ShopContext);
+  const {products , currency, cartItems,token, updateQuantity, navigate} = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   useEffect(()=>{
@@ -29,6 +30,16 @@ const Cart = () => {
       setCartData(tempData);
     }
   },[cartItems, products])
+
+  const handleNavigate = () => {
+    if(token){
+      navigate('/place-order')
+    }
+    else{
+      toast.error('Please login!')
+      navigate('login')
+    }
+  }
 
   return (
     <div className='border-t pt-14'>
@@ -69,7 +80,7 @@ const Cart = () => {
         <div className="w-full sm:w-[450px]">
           <CartTotal/>
           <div className="w-full text-end">
-            <button onClick={()=>navigate('/place-order')} className='bg-black text-white text-sm my-8 px-8 py-3'>PROCEED TO CHECKOUT</button>
+            <button onClick={handleNavigate} className='bg-black text-white text-sm my-8 px-8 py-3'>PROCEED TO CHECKOUT</button>
           </div>
         </div>
       </div>
