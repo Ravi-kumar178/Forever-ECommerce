@@ -7,6 +7,14 @@
 a.active hr{
     display: block;
 }
+a.active p{
+    color: #F2BA52;
+}
+
+.custom-shadow {
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.6); /* Adds a deeper inner shadow */
+}
+
 
 @media (max-width:640px) {
     a.active{
@@ -26,6 +34,27 @@ a.active hr{
     font-style: normal;
 }
 
+/* Collection page*/
+.gradient{
+ background: radial-gradient(circle,rgba(58, 57, 57, 0.5) 0%, rgba(57, 56, 56, 0) 100%);
+}
 
+input[type="checkbox"]:checked {
+    background-color: #f2f2f2; /* Light background when checked */
+    position: relative;
+  }
   
+  input[type="checkbox"]:checked::before {
+    content: '✔'; /* Checkmark */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: blue; /* Color of the tick */
+    font-size: 12px; /* Adjust font size of the tick */
+    font-weight: 700;
+  }
 
+  ::-webkit-scrollbar{
+    display: none;
+  }

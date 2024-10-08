@@ -43,7 +43,7 @@ const Orders = () => {
   },[token])
 
   return (
-    <div className=' border-t pt-16'>
+    <div className=' border-t pt-16 px-8'>
       <div className='text-2xl'>
         <Title text1={"MY"} text2={"ORDERS"}/>
       </div>
@@ -51,16 +51,16 @@ const Orders = () => {
       <div>
         {
           orderData.map((item,index)=> (
-            <div key={index} className='py-4 border-t border-b text-gray-700 flex flex-col md:flex-row md:items-center md:justify-between gap-4'>
+            <div key={index} className='py-4 border-t border-b text-gray-300 flex flex-col md:flex-row md:items-center md:justify-between gap-4'>
               <div className='flex items-start gap-6 text-sm'>
 
                 <img src={item.image[0]} className='w-16 sm:w-20' loading='lazy' alt="" />
 
                 <div>
                   <p className='sm:text-base font-medium'>{item.name}</p>
-                  <div className='flex items-center gap-3 mt-1 text-base text-gray-700'>
-                    <p className='text-lg'>{currency}{item.price}</p>
-                    <p>Quantity: {item.quantity}</p>
+                  <div className='flex items-center gap-3 mt-1 text-base text-gray-300'>
+                    <p className='text-lg bg-gradient-to-r from-[#66f649] to-[#a4fb93] bg-clip-text text-transparent'>{currency}{item.price}</p>
+                    <p >Quantity: {item.quantity}</p>
                     <p>Size: {item.size}</p>
                   </div>
 
@@ -76,7 +76,7 @@ const Orders = () => {
                   <p className='text-sm md:text-base'>{item.status}</p>
                 </div>
 
-                <button onClick={loadOrderData} className='border px-4 py-2 text-sm font-medium rounded-sm'>
+                <button onClick={loadOrderData} className='border px-4 py-2 hover:bg-gray-300 hover:text-[#111521] transition-all duration-500 text-sm font-medium rounded-sm'>
                   Track Order
                 </button>
               </div>

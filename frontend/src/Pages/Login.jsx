@@ -57,17 +57,17 @@ const Login = () => {
   },[token])
 
   return (
-    <form onSubmit={submitHandler} className='flex flex-col items-center w-[90%] sm:max-w-96 mx-auto mt-14 gap-4 text-gray-800'>
+    <form onSubmit={submitHandler} className='flex flex-col items-center w-[90%] sm:max-w-96 mx-auto mt-14 gap-4 text-gray-300'>
       <div className=' inline-flex items-center gap-2 mb-2 mt-10'>
-        <p className=' prata-regular text-3xl'>{currentState}</p>
+        <p className=' prata-regular text-3xl text-transparent bg-gradient-to-r from-blue-600 via-blue-400 to-blue-50 bg-clip-text'>{currentState}</p>
         <hr className='border-none h-[1.5px] w-8 bg-gray-800'/>
       </div>
       {
         currentState === "Login"?"":
-        <input type="text" onChange={(e)=>setName(e.target.value)} value={name} className=' w-full px-3 py-2 border border-gray-800' placeholder='Name' required />
+        <input type="text" onChange={(e)=>setName(e.target.value)} value={name} className=' w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-900 text-gray-300 focus:outline-none focus:outline-blue-500' placeholder='Name' required />
       }
-      <input type="email"  onChange={(e)=>setEmail(e.target.value)} value={email} className=' w-full px-3 py-2 border border-gray-800' placeholder='Email' required />
-      <input type="password"  onChange={(e)=>setPassword(e.target.value)} value={password} className=' w-full px-3 py-2 border border-gray-800' placeholder='Password' required />
+      <input type="email"  onChange={(e)=>setEmail(e.target.value)} value={email} className=' w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-900 text-gray-300 focus:outline-none focus:outline-blue-500' placeholder='Email' required />
+      <input type="password"  onChange={(e)=>setPassword(e.target.value)} value={password} className=' w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-900 text-gray-300 focus:outline-none focus:outline-blue-500' placeholder='Password' required />
 
       <div className='w-full flex justify-between text-sm mt-[-8px]'>
         <p className='cursor-pointer'>Forgot your password?</p>

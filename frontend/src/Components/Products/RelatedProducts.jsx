@@ -13,7 +13,7 @@ const RelatedProducts = ({category,subCategory}) => {
     let productCopy = products.slice();
      productCopy = productCopy.filter((product)=> category===product.category);
      productCopy = productCopy.filter((product)=>subCategory===product.subCategory);
-     productCopy = productCopy.slice(0,5);
+     productCopy = productCopy.slice(0,4);
      setFilteredProducts(productCopy);
   },[products])
 
@@ -24,11 +24,14 @@ const RelatedProducts = ({category,subCategory}) => {
             <Title text1={"RELATED"} text2={"PRODUCTS"}/>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
+        <div className="grid my-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4  gap-4 gap-y-6">
             {
-                filteredProducts.map((product,index)=>(
-                    <ProductItem key={index} id={product._id} name={product.name} image={product.image} price={product.price}/>
-                ))
+                filteredProducts.map((product,index)=>{
+                  let description = product.description.slice(0,100);
+                  return(
+                    <ProductItem key={index} id={product._id} name={product.name} image={product.image} price={product.price} description={description} subCategory={product.subCategory}/>
+                  )
+                })
             }
         </div>
     </div>

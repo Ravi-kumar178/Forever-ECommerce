@@ -16,10 +16,11 @@ import SearchBar from './Components/Common/SearchBar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+/*px-4  sm:px-[5vw] md:px-[7vw] lg:px-[9vw] */
 
 const App = () => {
   return (
-    <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
+    <div className=' bg-[#111521] w-full overflow-x-hidden'>
       <ToastContainer/>
       <Navbar/>
       <SearchBar/>

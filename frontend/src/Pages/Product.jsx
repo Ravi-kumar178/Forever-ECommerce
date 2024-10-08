@@ -25,11 +25,12 @@ const Product = () => {
 
   useEffect(()=>{
     fetchProductData();
+    window.scrollTo({top:0,behavior:'smooth'});
   },[productId,products]);
 
 
   return productData? (
-    <div className=' border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100'>
+    <div className='px-8 border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100'>
       {/* product data */}
       <div className='flex gap-12 sm:gap-12 flex-col sm:flex-row '>
         {/*Product Images */}
@@ -48,33 +49,33 @@ const Product = () => {
 
         {/* product info */}
          <div className='flex-1'>
-            <h1 className='text-2xl mt-2 font-medium'>{productData.name}</h1>
+            <h1 className='text-2xl mt-2 font-medium text-transparent bg-gradient-to-r from-blue-600 via-blue-400 to-blue-50 bg-clip-text'>{productData.name}</h1>
             <div className='flex items-center gap-1 mt-2'>
               <img src={assets.star_icon} alt="" loading='lazy' className='w-3.5'/>
               <img src={assets.star_icon} alt="" loading='lazy' className='w-3.5'/>
               <img src={assets.star_icon} alt="" loading='lazy' className='w-3.5'/>
               <img src={assets.star_icon} alt="" loading='lazy' className='w-3.5'/>
               <img src={assets.star_dull_icon} alt="" loading='lazy' className='w-3.5'/>
-              <p className='ml-2'>(122)</p>
+              <p className='ml-2 text-gray-300'>(122)</p>
             </div>
-            <p className='mt-5 text-3xl font-medium'>{currency}{productData.price}</p>
-            <p className='mt-5 text-gray-400 md:w-4/5'>{productData.description}</p>
+            <p className='mt-5 text-2xl font-medium bg-gradient-to-r from-[#66f649] to-[#a4fb93] bg-clip-text text-transparent'>{currency}{productData.price}</p>
+            <p className='mt-5 text-gray-300 md:w-4/5'>{productData.description}</p>
 
             <div className="flex flex-col gap-4 my-8">
-              <p>Select Size</p>
+              <p className='text-gray-300'>Select Size</p>
               <div className="flex gap-2">
                 {
                   productData.sizes.map((item,index)=>(
-                    <button key={index} onClick={()=>setSize(item)} className={`border py-2 px-4 bg-gray-100 ${item===size?"border-orange-500":""}`}>{item}</button>
+                    <button key={index} onClick={()=>setSize(item)} className={`border py-2 px-4 bg-gray-100 ${item===size?"border-orange-500 bg-gray-800":""}`}>{item}</button>
                   ))
                 }
               </div>
             </div>
 
-            <button onClick={()=>addToCart(productData._id,size)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
-            <hr className='mt-8 sm:w-4/5'/>
+            <button onClick={()=>addToCart(productData._id,size)} className='bg-gray-600 hover:bg-gray-300 hover:text-gray-800 text-white transition-all duration-500 px-8 py-3 text-sm font-medium active:bg-gray-700'>ADD TO CART</button>
+            <hr className='mt-8 sm:w-4/5 bg-gray-700 h-[2px] border-none'/>
 
-            <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
+            <div className='text-sm text-gray-300 mt-5 flex flex-col gap-1'>
                 <p>100% Original product.</p>
                 <p>Cash on delivery is available on this product.</p>
                 <p>Easy return and exchange policy within 7 days.</p>
@@ -82,8 +83,8 @@ const Product = () => {
          </div> 
       </div>
 
-        {/* descritpion and review */}
-        <div className="mt-20">
+       {/* descritpion and review */}
+  {/*       <div className="mt-20">
           <div className="flex">
             <b className='border px-3 py-5 text-sm'>Description</b>
             <p className='border px-3 py-5 text-sm'>Reviews(122)</p>
@@ -93,7 +94,7 @@ const Product = () => {
             <p>An e-commerce website is an online platform that facilitates the buying and selling of products or services over the internet. It serves as a virtual marketplace where businesses and individuals can showcase their products, interact with customers, and conduct transactions without the need for a physical presence. E-commerce websites have gained immense popularity due to their convenience, accessibility, and the global reach they offer.</p>
             <p>E-commerce websites typically display products or services along with detailed descriptions, images, prices, and any available variations (e.g., sizes, colors). Each product usually has its own dedicated page with relevant information.</p>
           </div>
-        </div>
+        </div>  */}
 
         {/* display related products */}
         <RelatedProducts category={productData.category} subCategory={productData.subCategory}/>

@@ -85,42 +85,42 @@ const Collection = () => {
   },[])
  */
   return (
-    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
+    <div className='px-8 flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
      
       {/* filter option */}
        <div className='min-w-60'>
-          <p onClick={()=>setShowFilter(!showFilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2 '>FILTER
+          <p onClick={()=>setShowFilter(!showFilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2 bg-gradient-to-r from-[#A6142F] via-[#FF512F] to-[#F09819]  text-transparent bg-clip-text'>FILTER
             <img src={assets.dropdown_icon} alt='' loading='lazy' className={`h-3 sm:hidden ${showFilter?"rotate-90":""}`}/>
           </p>
 
           {/* category filter */}
-          <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter?"":"hidden"} sm:block`}>
-            <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
-            <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-                <p className='flex gap-2'>
-                  <input onChange={toggleCategory} type="checkbox" value={"Men"} className='w-3' /> Men
+          <div className={`border border-gray-700 pl-5 py-3 mt-6 ${showFilter?"":"hidden"} sm:block shadow-[10px_5px_50px_-5px] gradient`}>
+            <p className='mb-3 text-sm font-medium text-transparent bg-gradient-to-r from-blue-600 via-blue-400 to-blue-50 bg-clip-text'>CATEGORIES</p>
+            <div className='flex flex-col gap-2 text-sm font-normal text-gray-100'>
+                <p className='flex gap-2 items-center '>
+                  <input onChange={toggleCategory} type="checkbox" value={"Men"} className='w-3 h-3 cursor-pointer appearance-none bg-gray-600 border-gray-800 rounded-sm appearance checked:bg-gray-100 checked:border-blue-500' /> Men
                 </p>
-                <p className='flex gap-2'>
-                  <input onChange={toggleCategory} type="checkbox" value={"Women"} className='w-3' /> Women
+                <p className='flex gap-2 items-center'>
+                  <input onChange={toggleCategory} type="checkbox" value={"Women"} className='w-3 h-3 cursor-pointer appearance-none bg-gray-600 border-gray-800 rounded-sm appearance checked:bg-gray-100 checked:border-blue-500' /> Women
                 </p>
-                <p className='flex gap-2'>
-                  <input onChange={toggleCategory} type="checkbox" value={"Kids"} className='w-3' /> Kids
+                <p className='flex gap-2 items-center'>
+                  <input onChange={toggleCategory} type="checkbox" value={"Kids"} className='w-3 h-3 cursor-pointer appearance-none bg-gray-600 border-gray-800 rounded-sm appearance checked:bg-gray-100 checked:border-blue-500' /> Kids
                 </p>
             </div>
           </div>
 
           {/*Sub category filter */}
-          <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter?"":"hidden"} sm:block`}>
-            <p className='mb-3 text-sm font-medium'>SUB-CATEGORIES</p>
-            <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-                <p className='flex gap-2'>
-                  <input onChange={toggleSubCategory} type="checkbox" value={"Topwear"} className='w-3' /> Topwear
+          <div className={`border border-gray-700 pl-5 py-3 mt-6 ${showFilter?"":"hidden"} sm:block gradient shadow-[10px_5px_50px_-5px]`}>
+            <p className='mb-3 text-sm font-medium text-transparent bg-gradient-to-r from-blue-600 via-blue-400 to-blue-50 bg-clip-text'>SUB-CATEGORIES</p>
+            <div className='flex flex-col gap-2 text-sm font-normal text-gray-100'>
+                <p className='flex gap-2 items-center'>
+                  <input onChange={toggleSubCategory} type="checkbox" value={"Topwear"} className='w-3 h-3 cursor-pointer appearance-none bg-gray-600 border-gray-800 rounded-sm appearance checked:bg-gray-100 checked:border-blue-500' /> Topwear
                 </p>
-                <p className='flex gap-2'>
-                  <input onChange={toggleSubCategory}  type="checkbox" value={"Bottomwear"} className='w-3' /> Bottomwear
+                <p className='flex gap-2 items-center'>
+                  <input onChange={toggleSubCategory}  type="checkbox" value={"Bottomwear"} className='w-3 h-3 cursor-pointer appearance-none bg-gray-600 border-gray-800 rounded-sm appearance checked:bg-gray-100 checked:border-blue-500' /> Bottomwear
                 </p>
-                <p className='flex gap-2'>
-                  <input onChange={toggleSubCategory}  type="checkbox" value={"Winterwear"} className='w-3' />Winterwear
+                <p className='flex gap-2 items-center'>
+                  <input onChange={toggleSubCategory}  type="checkbox" value={"Winterwear"} className='w-3 h-3 cursor-pointer appearance-none bg-gray-600 border-gray-800 rounded-sm appearance checked:bg-gray-100 checked:border-blue-500' />Winterwear
                 </p>
             </div>
           </div>
@@ -132,20 +132,23 @@ const Collection = () => {
               <Title text1={"ALL"} text2={"COLLECTIONS"}/>
 
               {/* product sort */}
-              <select onChange={(e)=>setSortType(e.target.value)} className='border-2 border-gray-300 text-sm px-2'>
-                <option value="relevant">SORT by: Relevant</option>
-                <option value="low-high">SORT by: Low to High</option>
-                <option value="high-low">SORT by: High to Low</option>
+              <select onChange={(e)=>setSortType(e.target.value)} className='border rounded-md text-gray-100 border-gray-800 bg-gray-600 text-sm px-2'>
+                <option value="relevant"className='text-blue-500 '>SORT by: Relevant</option>
+                <option value="low-high" className='text-blue-500'>SORT by: Low to High</option>
+                <option value="high-low" className='text-blue-500'>SORT by: High to Low</option>
               </select>
           </div>
 
           {/* map products */}
-          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
+          <div className='grid grid-cols-2 md:grid-cols-3  gap-4 gap-y-6'>
             {
               filteredProducts.length>0 && (
-                filteredProducts.map((product,index)=>(
-                   <ProductItem key={index} id={product._id} name={product.name} price={product.price} image={product.image}/>
-                ))
+                filteredProducts.map((product,index)=>{
+                  let description = product.description.slice(0,100);
+                  return(
+                    <ProductItem key={index} id={product._id} name={product.name} price={product.price} image={product.image} description={description} subCategory={product.subCategory}/>
+                  )
+                })
               )
             }
           </div>
