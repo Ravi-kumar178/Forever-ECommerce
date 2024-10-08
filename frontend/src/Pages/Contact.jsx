@@ -14,7 +14,7 @@ const Contact = () => {
           <div className="flex flex-col justify-center items-start gap-6">
             <p className='font-semibold text-xl text-transparent bg-gradient-to-r from-blue-600 via-blue-400 to-blue-50 bg-clip-text'>Our Store</p>
             <p className='text-gray-300'>54709 Willms Station <br/>Suite 350, Washington, USA</p>
-            <p className='text-gray-300'>Tel: (415) 555‑0132 <br/> Email: greatstackdev@gmail.com</p>
+            <p className='text-gray-300'>Tel: (415) 555‑0132 <br/> Email: playette@gmail.com</p>
             <b className='font-semibold text-xl text-transparent bg-gradient-to-r from-blue-600 via-blue-400 to-blue-50 bg-clip-text'>CAREERS AT FOREVER</b>
             <p className='text-gray-300'>Learn more about our teams and job openings.</p>
 
