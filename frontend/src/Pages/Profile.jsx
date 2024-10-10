@@ -21,14 +21,14 @@ const Profile = () => {
         try {
             if (!token) {
                 navigate('/login');
-                return; // Added return to prevent further execution
+                return; 
             }
 
             const response = await axios.get(`${backendUrl}/api/user/profile`, { headers: { token } });
             console.log(response.data);
             if (response.data.success) {
                 setProfileData(response.data.user);
-                // Set form data based on profile data
+                
                 setFormData({
                     name: response.data.user.name,
                     email: response.data.user.email,
@@ -46,21 +46,21 @@ const Profile = () => {
         getUserDetails();
     }, [token]);
 
-    // Handle input changes
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    // Handle form submission
+   
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Implement your update logic here
+       
         try {
             const response = await axios.put(`${backendUrl}/api/user/profile/update`, formData, { headers: { token } });
             if (response.data.success) {
                 toast.success("Profile updated successfully!");
-                // You may also want to refetch user details here
+                // refetch user details here
                 getUserDetails();
             } else {
                 toast.error(response.data.message);
