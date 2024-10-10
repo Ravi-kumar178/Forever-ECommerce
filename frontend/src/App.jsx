@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Pages/Home'
 import Collection from './Pages/Collection'
@@ -16,10 +16,15 @@ import SearchBar from './Components/Common/SearchBar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Profile from './Pages/Profile'
+import NotFound from './Pages/NotFound'
+import { ShopContext } from './Context/ShopContext'
+import PrivateRoute from './Components/PrivateRoute'
 
 /*px-4  sm:px-[5vw] md:px-[7vw] lg:px-[9vw] */
 
 const App = () => {
+  const {token} = useContext(ShopContext);
+
   return (
     <div className=' bg-[#111521] w-full overflow-x-hidden'>
       <ToastContainer/>
@@ -34,8 +39,9 @@ const App = () => {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/place-order' element={<PlaceOrder/>}/>
-        <Route path='/orders' element={<Orders/>}/>
-        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/orders' element={<PrivateRoute element={<Orders/>} isAuthenticated={!!token}/>}/>
+        <Route path='/profile' element={<PrivateRoute element={<Profile/>} isAuthenticated={!!token}/>}/>
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
       <Footer/>
     </div>
