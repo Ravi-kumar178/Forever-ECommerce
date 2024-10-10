@@ -73,7 +73,7 @@ const Navbar = () => {
             <div className='flex flex-col text-gray-600'>
                 <div onClick={()=>setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
                     <img src={assets.dropdown_icon} alt="" loading='lazy' className='h-4 rotate-180' />
-                    <p>Back</p>
+                    <p className=''>Back</p>
                 </div>
 
                 <NavLink onClick={()=>setVisible(false)} to={"/"} className={"py-2 pt-6 pl-4 border uppercase"}>Home</NavLink>
