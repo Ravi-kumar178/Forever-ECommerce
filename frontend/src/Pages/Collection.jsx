@@ -33,7 +33,7 @@ const Collection = () => {
     }
   }
 
-  const applyFilter = useCallback(()=>{
+  const applyFilter = ()=>{
 
     let productCopy = products.slice();
     if(category.length>0){
@@ -49,7 +49,7 @@ const Collection = () => {
     }
 
     setFilteredProducts(productCopy);
-  },[category,subCategory,search,showSearch]);
+  };
 
 
   useEffect(()=>{
