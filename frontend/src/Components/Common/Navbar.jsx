@@ -53,7 +53,7 @@ const Navbar = () => {
                 token && 
              <div className=' group-hover:block hidden absolute right-0 pt-4 z-50'>
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-[#0e111b] border-2 border-[#5f6a83]  shadow-inner custom-shadow text-gray-300 rounded  z-50'>
-                    <p className=' cursor-pointer hover:text-[#F2BA52]'>My Profile</p>
+                    <p onClick={()=>navigate('/profile')} className=' cursor-pointer hover:text-[#F2BA52]'>My Profile</p>
                     <p onClick={()=>navigate('/orders')} className=' cursor-pointer hover:text-[#F2BA52]'>Orders</p>
                     <p onClick={logout} className=' cursor-pointer hover:text-[#F2BA52]'>Log Out</p>
                 </div>

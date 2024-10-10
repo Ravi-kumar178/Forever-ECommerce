@@ -3,6 +3,8 @@ import validator from 'validator';
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
+
+
 const generateToken = (id) => {
     return jwt.sign({id},process.env.JWT_SECRET);
 }
@@ -59,13 +61,15 @@ const registerUser = async(req,res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password,salt);
 
-    const newUser = new userModel({name,email,password:hashedPassword});
+    const profieUrl = `https://avatar.iran.liara.run/public/boy?username=${name}`
+
+    const newUser = new userModel({name,email,password:hashedPassword,profileImage:profieUrl});
 
     const user = await newUser.save();
     //generate token
     const token = generateToken(user._id);
 
-    return res.json({success:200 , token});
+    return res.json({success:true , token});
 
     
   } catch (error) {
@@ -95,5 +99,65 @@ const adminLogin = async(req,res) => {
   }
 }
 
+const getUserDetails = async(req,res) => {
+  try {
+    const userId = req.body.userId;
+    const user = await userModel.findById(userId).select('-password');
+    if(!user){
+      return res.json({success:false,message:'User not found'});
+    }
+    return res.json({success:true,user})
+  } 
+  catch (error) {
+    console.log(error);
+    return res.json({success:false, message:error.message})
+  }
+}
 
-export {registerUser, loginUser , adminLogin}
+const updateUserProfile = async(req,res)=>{
+  try {
+    const userId = req.body.userId;
+    const{name,email,currentPassword,newPassword} = req.body;
+    
+    const user = await userModel.findById(userId);
+    if(!user){
+      return res.json({success:false, message:"User not found"})
+    }
+
+    if(email) user.email = email;
+    if(name){
+      user.name = name;
+      let profieUrl = `https://avatar.iran.liara.run/public/boy?username=${name}`
+      user.profileImage = profieUrl;
+    }
+
+    if(currentPassword && newPassword){
+      const isMatch = await bcrypt.compare(currentPassword,user.password);
+
+      if(!isMatch){
+        return res.json({success:false,message:"Incorrect Current Password"})
+      }
+
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(newPassword,salt);
+      user.password = hashedPassword;
+    }
+
+    await user.save();
+
+    return res.json({success:true, message: 'Profile updated successfully',
+      user: {
+        name: user.name,
+        email: user.email,
+        profileImage: user.profileImage
+      }
+    })
+
+  } 
+  catch (error) {
+    console.log(error);
+    return res.json({success:false, message:error.message})
+  }
+}
+
+export {registerUser, loginUser , adminLogin, getUserDetails, updateUserProfile}
